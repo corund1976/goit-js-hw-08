@@ -1,6 +1,6 @@
 import throttle from 'lodash.throttle';
 
-// --------- Поля инпутов
+// --------- Поля Inputs
 const inputEmail = document.querySelector('#inputEmail');
 const textareaMessage = document.querySelector('#textareaMessage');
 
@@ -10,7 +10,7 @@ let parsedInputs = JSON.parse(savedInputs);
 
 // ---------- Проверяем, что обьект в хранилище не пустой
 if (savedInputs) {
-// ---------Заполняем поля значениями из локального хранилища
+// ---------Заполняем поля Inputs значениями из локального хранилища
     inputEmail.value = parsedInputs.email;
     textareaMessage.value = parsedInputs.message;
 }
