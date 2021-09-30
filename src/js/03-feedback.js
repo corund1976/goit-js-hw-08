@@ -32,11 +32,11 @@ function handleInput(event) {
     }
 
     // записываем "текущие значения полей формы" в "локальное хранилище"
-    function callback () {
+    // function callback () {
         localStorage.setItem("feedback-form-state", JSON.stringify(data));
-    };
+    // };
 
-    throttle(callback, 500);
+    // throttle(callback, 500);
 }
 
 // --------- Колбэк для Submit
