@@ -18,15 +18,12 @@ if (savedInputs) {
 // --------- Сама форма
 const inputForm = document.querySelector('.feedback-form');
 // --------- Вешаем на нее "слушателей"
-// inputForm.addEventListener("input", handleInput);
-inputForm.addEventListener("input", throttle(handleInput, 500));
+inputForm.addEventListener("input", handleInput);
+// inputForm.addEventListener("input", throttle(handleInput, 500));
 inputForm.addEventListener("submit", handleSubmit);
 
 // ---------- Колбэк для Inputs
 function handleInput(event) {
-    event.preventDefault();
-    if (!event.currentTarget) return false;
-
     const { email, message } = event.currentTarget.elements;
         
     const data = {
@@ -35,7 +32,11 @@ function handleInput(event) {
     }
 
     // записываем "текущие значения полей формы" в "локальное хранилище"
-    localStorage.setItem("feedback-form-state", JSON.stringify(data));
+    function callback () {
+        localStorage.setItem("feedback-form-state", JSON.stringify(data));
+    };
+
+    throttle(callback, 500);
 }
 
 // --------- Колбэк для Submit

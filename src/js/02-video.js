@@ -3,16 +3,6 @@ import throttle from 'lodash.throttle';
 const iframe = document.querySelector('iframe');
 const player = new Vimeo.Player(iframe);
 
-// ========= Лишние фуекции : Приветственное сообщение и Заголовок видео
-
-// player.on('play', function () {
-//     console.log('played the video!');
-// });
-
-// player.getVideoTitle().then(function(title) {
-//     console.log('title:', title);
-// });
-
 // ========== Запись текущей секунды воспроизведения в локальное хранилище
 
 player.on('timeupdate', throttle(data => {
@@ -29,10 +19,13 @@ player.on('timeupdate', throttle(data => {
 
 // ========== Вызов плеера с текущей секунды воспроизведения (из локального хранилища)
 
-player.setCurrentTime(localStorage.getItem("videoplayer-current-time"));
+let timeToResume = localStorage.getItem("videoplayer-current-time");
 
-// ---------- Предыдущие этапы решения ---------
-// const timeToResume = localStorage.getItem("videoplayer-current-time");
+if (!timeToResume) {
+    timeToResume = 0;
+};
+
 // console.log("Продолжаю воспроизведение с ", Math.round(timeToResume), "секунды....");
-// player.setCurrentTime(timeToResume);
+player.setCurrentTime(timeToResume);
 
+// localStorage.removeItem("videoplayer-current-time");
