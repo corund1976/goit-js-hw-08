@@ -40,6 +40,8 @@ function handleInput() {
 function handleSubmit(event) {
     event.preventDefault();
     
+    savedInputs = localStorage.getItem("feedback-form-state");
+
     // ---------- Проверяем, что обьект в хранилище не пустой
     if (savedInputs) {
     // ---------Заполняем поля ввода значениями из локального хранилища
