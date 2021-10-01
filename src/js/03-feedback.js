@@ -1,10 +1,11 @@
 import throttle from 'lodash.throttle';
 
-// --------- Форма и ее поля ввода
+// --------- Форма и ее поля ввода ---------
 const inputForm = document.querySelector('.feedback-form');
 const formEmail = inputForm.querySelector("input");
 const formMessage = inputForm.querySelector("textarea");
 
+//  ---------- Объект для сохранения и вывода данных --------
 let parsedInputs = {
     email: '',
     message: ''
